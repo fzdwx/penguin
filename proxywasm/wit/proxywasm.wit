@@ -2,7 +2,7 @@ package penguin: sdk;
 
 interface types {
   resource session {
-    write-response-body: func(body: list<u8>,end-of-stream: bool) -> option<bool>;
+    write-response-body: func(body: list<u8>,end-of-stream: bool) -> result<bool>;
   }
 }
 
