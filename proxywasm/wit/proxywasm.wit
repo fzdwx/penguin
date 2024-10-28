@@ -1,4 +1,15 @@
 package penguin: sdk;
 
+interface types {
+  resource session {
+    write-response-body: func(body: list<u8>,end-of-stream: bool) -> option<bool>;
+  }
+}
+
+
 world proxy-wasm {
+  use types.{session};
+
+  export init-plugin: func();
+  export request-filter: func(session: session) -> result<bool,string>;
 }

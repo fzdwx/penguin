@@ -1451,6 +1451,7 @@ dependencies = [
  "once_cell",
  "pingora",
  "pingora-limits",
+ "proxywasm",
  "regex",
  "serde",
  "serde_with",
