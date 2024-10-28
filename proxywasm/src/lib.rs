@@ -17,10 +17,10 @@ pub fn register_plugin(build: fn() -> Box<dyn Plugin>) {
 
 #[macro_export]
 macro_rules! register_plugin {
-    ($extension_type:ty) => {
+    ($plugin_type:ty) => {
         #[export_name = "init-plugin"]
-        pub extern "C" fn __init_extension() {
-            api::register_extension(|| Box::new(<$extension_type as api::Extension>::new()));
+        pub extern "C" fn __init_plugin() {
+            proxywasm::register_plugin(|| Box::new(<$plugin_type as proxywasm::Plugin>::new()));
         }
     };
 }

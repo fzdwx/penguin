@@ -1,4 +1,4 @@
-use proxywasm::{Plugin, Session};
+use proxywasm::{register_plugin, Plugin, Session};
 
 struct MyPlugin;
 
@@ -15,3 +15,5 @@ impl Plugin for MyPlugin {
         Ok(true)
     }
 }
+
+register_plugin!(MyPlugin);
