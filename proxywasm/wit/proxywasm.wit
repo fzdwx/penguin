@@ -1,0 +1,4 @@
+package penguin: sdk;
+
+world proxy-wasm {
+}

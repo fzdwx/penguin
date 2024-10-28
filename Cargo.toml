@@ -1,18 +1,32 @@
 [package]
 name = "penguin"
+version.workspace = true
+edition.workspace = true
+
+[workspace]
+members = ["proxywasm"]
+workspace.resolver = "2"
+
+[workspace.package]
 version = "0.1.0"
 edition = "2021"
 
+
+[workspace.dependencies]
+wasmtime = "26.0"
+wasmtime-wasi = "26.0"
+wit-bindgen = "0.34.0"
+
 [dependencies]
 async-trait = "0.1.83"
-bytes = {version = "1.8.0"}
+bytes = { version = "1.8.0" }
 clap = { version = "4.5.20", features = ["derive"] }
 config = { version = "0.14.1", default-features = false, features = ["yaml"] }
 env_logger = { version = "0.11.5", features = ["unstable-kv"] }
 hickory-resolver = "0.24.1"
 http = "1.1.0"
 humantime-serde = "1.1.1"
-log = {version = "0.4.22", features = ["kv"]}
+log = { version = "0.4.22", features = ["kv"] }
 matchit = "0.8.4"
 once_cell = "1.20.2"
 pingora = { version = "0.3.0", features = ["lb", "openssl"] }
