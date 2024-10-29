@@ -1,6 +1,7 @@
 use std::{path::PathBuf, sync::Arc};
 
 use clap::Parser;
+use penguin::plugins::load_wasm_plugin;
 use penguin::{
     builder::{build_plugin_list, init_discovery_providers, init_routes},
     clusters::ClusterManager,
@@ -19,7 +20,8 @@ use pingora::{
 use snafu::ResultExt;
 use validator::Validate;
 
-fn main() -> Result<(), AppError> {
+#[tokio::main]
+async fn main() -> Result<(), AppError> {
     let args = Args::parse();
     env_logger::Builder::from_default_env()
         .format_timestamp(None)
@@ -31,6 +33,9 @@ fn main() -> Result<(), AppError> {
         }
         Command::Run => {
             let config = load_and_validate_config(args.config)?;
+
+            load_wasm_plugin(&config.wasm_plugins).await;
+
             // init discovery providers
             let resolvers = init_discovery_providers(&config.discovery_providers).unwrap();
 

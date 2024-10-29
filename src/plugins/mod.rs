@@ -7,6 +7,9 @@ use serde_yaml::Value as YamlValue;
 pub mod cms_rate;
 pub mod echo;
 pub mod errors;
+mod wasm;
+
+pub use wasm::load_wasm_plugin;
 
 use errors::*;
 

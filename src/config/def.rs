@@ -14,6 +14,8 @@ pub struct Config {
     pub services: Vec<Service>,
     #[serde(rename = "resolvers", default)]
     pub discovery_providers: Vec<DiscoveryProvider>,
+    #[serde(default)]
+    pub wasm_plugins: Vec<WasmPluginDef>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -176,6 +178,12 @@ pub struct DiscoveryProvider {
 pub enum ResolverType {
     DNS,
     Static,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct WasmPluginDef {
+    pub name: String,
+    pub url: String,
 }
 
 fn validate_listener(listener: &Listener) -> Result<(), ValidationError> {

@@ -2,7 +2,7 @@ package penguin: sdk;
 
 interface types {
   resource session {
-    write-response-body: func(body: list<u8>,end-of-stream: bool) -> result<bool>;
+    write-response: func(body: list<u8>,end-of-stream: bool) -> result;
   }
 }
 
@@ -11,5 +11,5 @@ world proxy-wasm {
   use types.{session};
 
   export init-plugin: func();
-  export request-filter: func(session: session) -> result<bool,string>;
+  export request-filter: func(session: borrow<session>) -> result<bool,string>;
 }

@@ -4,7 +4,7 @@ version.workspace = true
 edition.workspace = true
 
 [workspace]
-members = [ "myplugin","proxywasm"]
+members = ["myplugin", "proxywasm"]
 workspace.resolver = "2"
 
 [workspace.package]
@@ -16,6 +16,7 @@ edition = "2021"
 wasmtime = "26.0"
 wasmtime-wasi = "26.0"
 wit-bindgen = "0.34.0"
+proxywasm = { path = "./proxywasm" }
 
 [dependencies]
 async-trait = "0.1.83"
@@ -38,4 +39,5 @@ serde_yaml = "0.9.34"
 snafu = "0.8.5"
 tokio = { version = "1.41.0", features = ["full"] }
 validator = { version = "0.18.1", features = ["derive"] }
-proxywasm = { path = "./proxywasm" }
+wasmtime = {workspace = true}
+wasmtime-wasi = {workspace = true}

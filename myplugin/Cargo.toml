@@ -5,5 +5,6 @@ edition.workspace = true
 
 [lib]
 crate-type = ["cdylib"]
+
 [dependencies]
-proxywasm = { path = "../proxywasm" }
+proxywasm = { workspace = true }
